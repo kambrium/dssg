@@ -1,0 +1,13 @@
+{
+	"name": "dssg",
+	"authors": [
+		"Martin Muehlbauer"
+	],
+	"description": "A simple static site generator written in D.",
+	"copyright": "Copyright © 2017, Martin Muehlbauer",
+	"license": "MIT",
+	"dependencies": {
+		"mustache-d": "~>0.1.3",
+		"dmarkdown": "~>0.2.2"
+	}
+}
