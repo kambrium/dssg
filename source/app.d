@@ -75,7 +75,7 @@ void buildProject()
     catch (AssertError e)
     {
         writeln(dirStructureError);
-        dssgExit;
+        exitDssg;
     }
     
     writeln("Starting the build process...");
@@ -127,7 +127,7 @@ void createBuildRoot()
     catch (FileException e)
     {
         writeln(deleteError);
-        dssgExit;
+        exitDssg;
     }
 }
 
@@ -142,7 +142,7 @@ void processPage(string pageName, string path)
     catch (UTFException e)
     {
         writeln(format(inputFileError, path));
-        dssgExit;
+        exitDssg;
     }
 
     // Split front matter and body at delimiter
@@ -163,7 +163,7 @@ void processPage(string pageName, string path)
     catch (JSONException e)
     {
         writeln(format(jsonError, path));
-        dssgExit;
+        exitDssg;
     }
     foreach (string key, value; j)
         if (key == "template")
@@ -196,7 +196,7 @@ void processPage(string pageName, string path)
     catch (FileException e)
     {
         writeln(format(templateError, htmlPath));
-        dssgExit;
+        exitDssg;
     }
 }
 
@@ -211,7 +211,7 @@ void showHelp()
     writeln("  dssg help                Read this help text");
 }
 
-void dssgExit()
+void exitDssg()
 {
     writeln("Build not finished. Exiting...");
     exit(0);
