@@ -36,19 +36,45 @@ void main(string[] args)
     {
         switch (args[1])
         {
-            case "new": assert(args.length == 3); createProject(args[2]); break;
-            case "build": assert(args.length == 2); buildProject; break;
-            case "help": assert(args.length == 2); showHelp; break;
+            case "new":
+                if (args.length == 3)
+                {
+                    createProject(args[2]);
+                    break;
+                }
+                else
+                {
+                    writeln(invalidAmountError);
+                    break;
+                }
+            case "build":
+                if (args.length == 2)
+                {
+                    buildProject;
+                    break;
+                }
+                else
+                {
+                    writeln(invalidAmountError);
+                    break;
+                }
+            case "help":
+                if (args.length == 2)
+                {
+                    showHelp;
+                    break;
+                }
+                else
+                {
+                    writeln(invalidAmountError);
+                    break;
+                }
             default: writeln(invalidArgumentError);
         }
     }
-    catch (AssertError e)
-    {
-        writeln(invalidAmountError);
-    }
     catch (RangeError e)
     {
-        showHelp;
+        writeln(invalidArgumentError);
     }
 }
 
@@ -68,48 +94,46 @@ void createProject(string projectName)
 void buildProject()
 {
     // Make sure that required directories exist
-    try
+    if (templatesRoot.exists)
     {
-        assert(templatesRoot.exists);
+        writeln("Starting the build process...");
+
+        createBuildRoot;
+
+        // Iterate through all items in contentsRoot
+        foreach (DirEntry entry; dirEntries(contentsRoot, SpanMode.breadth))
+        {
+            // Ignore templatesRoot
+            if (!startsWith(entry.name, templatesRoot))
+            {
+                string path = entry.name;
+                path.popFrontExactly(contentsRoot.length+1);
+
+                // Create equivalent directory in build directory
+                if (entry.isDir)
+                {
+                    mkdir(buildPath(buildRoot, path));
+                }
+                // Process Markdown files
+                else if (entry.isFile && endsWith(entry.name, ".md"))
+                {
+                    processPage(entry.name, path);
+                }
+                // Just copy all the other files
+                else if (entry.isFile)
+                {
+                    copy(entry.name, buildPath(buildRoot, path));
+                }
+            }
+        }
+
+        writeln("Finished new build.");
     }
-    catch (AssertError e)
+    else
     {
         writeln(dirStructureError);
         exitDssg;
     }
-    
-    writeln("Starting the build process...");
-
-    createBuildRoot;
-
-    // Iterate through all items in contentsRoot
-    foreach (DirEntry entry; dirEntries(contentsRoot, SpanMode.breadth))
-    {
-        // Ignore templatesRoot
-        if (!startsWith(entry.name, templatesRoot))
-        {
-            string path = entry.name;
-            path.popFrontExactly(contentsRoot.length+1);
-
-            // Create equivalent directory in build directory
-            if (entry.isDir)
-            {
-                mkdir(buildPath(buildRoot, path));
-            }
-            // Process Markdown files
-            else if (entry.isFile && endsWith(entry.name, ".md"))
-            {
-                processPage(entry.name, path);
-            }
-            // Just copy all the other files
-            else if (entry.isFile)
-            {
-                copy(entry.name, buildPath(buildRoot, path));
-            }
-        }
-    }
-
-    writeln("Finished new build.");
 }
 
 void createBuildRoot()
