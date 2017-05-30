@@ -58,6 +58,17 @@ void main(string[] args)
                     writeln(invalidAmountError);
                     break;
                 }
+            case "version":
+                if (args.length == 2)
+                {
+                    getVersion;
+                    break;
+                }
+                else
+                {
+                    writeln(invalidAmountError);
+                    break;
+                }
             case "help":
                 if (args.length == 2)
                 {
@@ -232,6 +243,7 @@ void showHelp()
     writeln("Usage:");
     writeln("  dssg new <project_name>  Create a new DSSG project");
     writeln("  dssg build               Build a DSSG project");
+    writeln("  dssg version             Get DSSG version");
     writeln("  dssg help                Read this help text");
 }
 
@@ -239,4 +251,9 @@ void exitDssg()
 {
     writeln("Build not finished. Exiting...");
     exit(0);
+}
+
+private void getVersion()
+{
+    writeln(ver);
 }
