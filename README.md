@@ -24,7 +24,7 @@ Try the Example
 $ git clone https://github.com/kambrium/dssg-example.git
 $ cd dssg-example
 $ dssg build
-$ firefox build/index.html
+$ dssg serve
 ```
 
 Begin from Scratch
@@ -33,11 +33,8 @@ Begin from Scratch
 $ dssg new myproject
 // Create Markdown files, CSS, JavaScript, images etc. in the directory 'contents', Mustache templates in 'contents/_templates'.
 $ dssg build
+$ dssg serve
 ```
-
-Why?
-----
-I wanted to get to know the D programming language and needed a substitute for Microsoft's Dynamic Web Templates (used in deprecated Expression Web).
 
 License
 -------
