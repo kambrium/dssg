@@ -12,6 +12,10 @@ import std.range.primitives;
 import std.regex;
 import std.stdio;
 import std.utf;
+import vibe.core.core;
+import vibe.http.fileserver;
+import vibe.http.router;
+import vibe.http.server;
 
 // Constants 
 enum ver = "0.1.0";
@@ -51,6 +55,17 @@ void main(string[] args)
                 if (args.length == 2)
                 {
                     buildProject;
+                    break;
+                }
+                else
+                {
+                    writeln(invalidAmountError);
+                    break;
+                }
+            case "serve":
+                if (args.length == 2)
+                {
+                    serveProject;
                     break;
                 }
                 else
@@ -213,11 +228,6 @@ void processPage(string pageName, string path)
     // Deal with the body
     string contentHtml = filterMarkdown(contentMarkdown[1]);
     context["CONTENT"] = contentHtml;
-
-    // Deal with relative URLs in templates
-    auto pathItems = pathSplitter(path).array;
-    ulong pathItemsAmount = pathItems.length;
-    context["ROOT"] = "../".replicate(pathItemsAmount-1);
     
     // Build paths for rendering and saving
     string templatePath = buildPath(templatesRoot, pageTemplate);
@@ -235,6 +245,19 @@ void processPage(string pageName, string path)
     }
 }
 
+private int serveProject()
+{
+    writeln("Starting server...");
+    writeln("Press Ctrl+C to quit.");
+    auto router = new URLRouter;
+    router.get("*", serveStaticFiles(buildRoot));
+    auto settings = new HTTPServerSettings;
+    settings.port = 50_000;
+    settings.bindAddresses = ["::1", "127.0.0.1"];
+    listenHTTP(settings, router);
+    return runEventLoop();
+}
+
 void showHelp()
 {
     // Help text
@@ -243,6 +266,7 @@ void showHelp()
     writeln("Usage:");
     writeln("  dssg new <project_name>  Create a new DSSG project");
     writeln("  dssg build               Build a DSSG project");
+    writeln("  dssg serve               Serve DSSG project on port 50000");
     writeln("  dssg version             Get DSSG version");
     writeln("  dssg help                Read this help text");
 }
