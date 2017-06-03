@@ -280,7 +280,7 @@ private int serveProject(ushort port)
 void showHelp()
 {
     // Help text
-    writeln(format("DSSG - A static site generator written in D - Version %s", ver));
+    writeln("DSSG - A static site generator written in D");
     writeln("");
     writeln("Usage:");
     writeln("  dssg new <project_name>  Create a new DSSG project");
