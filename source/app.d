@@ -4,6 +4,7 @@ import dmarkdown;
 import mustache;
 import std.algorithm.searching;
 import std.array;
+import std.conv;
 import std.file;
 import std.format;
 import std.json;
@@ -27,11 +28,15 @@ enum buildRoot = "build";
 enum invalidArgumentError = "ERROR: Invalid argument(s) given. HINT: Enter 'dssg help' for a list of valid arguments.";
 enum invalidAmountError = "ERROR: Invalid amount of arguments given. HINT: Enter 'dssg help' for help.";
 enum dirStructureError = format("ERROR: Could not find required directories '%s' and/or '%s'. HINT: Create them manually or use 'dssg new <name_of_new_project>'.", contentsRoot, templatesRoot);
+enum invalidTypeError = "ERROR: %s is not a valid port number.";
 enum createError = "ERROR: %s already exists. Try another name.";
 enum deleteError = "ERROR: Could not delete build directory. HINT: Maybe a directory or file in the build directory is in use?";
 enum inputFileError = "ERROR: Could not read file '%s'. HINT: Maybe it's not a text file.";
 enum jsonError = "ERROR: Could not process JSON in file '%s'. HINT: Check JSON syntax and position of delimiter [SPLIT].";
 enum templateError = "ERROR: Could not create HTML file '%s'. HINTS: Maybe the template's name specified in frontmatter is not correct. Maybe the default template (template.mustache) doesn't exist.";
+
+ushort port = 4242;
+
 
 void main(string[] args)
 { 
@@ -65,8 +70,22 @@ void main(string[] args)
             case "serve":
                 if (args.length == 2)
                 {
-                    serveProject;
+                    serveProject(port);
                     break;
+                }
+                if (args.length == 3)
+                {
+                    try
+                    {
+                        port = to!ushort(args[2]);
+                        serveProject(port);
+                        break;
+                    }
+                    catch (ConvException e)
+                    {
+                        writeln(format(invalidTypeError, args[2]));
+                        break;
+                    }
                 }
                 else
                 {
@@ -245,14 +264,14 @@ void processPage(string pageName, string path)
     }
 }
 
-private int serveProject()
+private int serveProject(ushort port)
 {
     writeln("Starting server...");
     writeln("Press Ctrl+C to quit.");
     auto router = new URLRouter;
     router.get("*", serveStaticFiles(buildRoot));
     auto settings = new HTTPServerSettings;
-    settings.port = 50_000;
+    settings.port = port;
     settings.bindAddresses = ["::1", "127.0.0.1"];
     listenHTTP(settings, router);
     return runEventLoop();
