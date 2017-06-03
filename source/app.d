@@ -19,7 +19,7 @@ import vibe.http.router;
 import vibe.http.server;
 
 // Constants 
-enum ver = "0.1.0";
+enum ver = "0.2.0";
 
 enum contentsRoot = "contents";
 enum templatesRoot = buildPath(contentsRoot,"_templates");
