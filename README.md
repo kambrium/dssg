@@ -31,6 +31,7 @@ Begin from Scratch
 ------------------
 ```shell
 $ dssg new myproject
+$ cd myproject
 // Create Mustache templates in 'contents/_templates'
 // Create Markdown files, CSS, JavaScript, images etc. in 'contents'
 $ dssg build
