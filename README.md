@@ -3,6 +3,8 @@ DSSG - A static site generator written in D
 
 ![DSSG logo](dssg-logo.jpg)
 
+[![Build Status](https://travis-ci.org/kambrium/dssg.svg?branch=master)](https://travis-ci.org/kambrium/dssg)
+
 About
 -----
 DSSG is a static site generator written in the D programming language. It creates HTML pages out of Markdown files and Mustache templates.
