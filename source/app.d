@@ -9,10 +9,11 @@ import std.file;
 import std.format;
 import std.json;
 import std.path;
-import std.range.primitives;
+import std.range;
 import std.regex;
 import std.stdio;
 import std.utf;
+import toml;
 import vibe.core.core;
 import vibe.http.fileserver;
 import vibe.http.router;
@@ -159,8 +160,8 @@ void buildProject()
                 {
                     mkdir(buildPath(buildRoot, path));
                 }
-                // Process Markdown files
-                else if (entry.isFile && endsWith(entry.name, ".md"))
+                // Process TOML files
+                else if (entry.isFile && endsWith(entry.name, ".toml"))
                 {
                     processPage(entry.name, path);
                 }
@@ -214,39 +215,51 @@ void processPage(string pageName, string path)
         exitDssg;
     }
 
-    // Split front matter and body at delimiter
-    auto frontMatter = matchFirst(inputFromFile, regex(`(.*?)\[SPLIT\]`, "s"));
-    auto contentMarkdown = matchFirst(inputFromFile, regex(`\[SPLIT\](.*)`, "s"));
+    TOMLDocument tomlFromFile = parseTOML(inputFromFile);
 
+    // Prepare template context
     alias MustacheEngine!(string) Mustache;
     Mustache mustache;
     auto context = new Mustache.Context;
 
-    // Deal with the front matter
     string pageTemplate = "template";
-    JSONValue j;
-    try
+
+    // Iterate through TOMLDocument
+    foreach (string key, value; tomlFromFile)
     {
-        j = parseJSON(frontMatter[1]);
-    }
-    catch (JSONException e)
-    {
-        writeln(format(jsonError, path));
-        exitDssg;
-    }
-    foreach (string key, value; j)
+        // Turn TOML value to string and drop quotation marks at the beginning and end of string
+        string valueString = value.toString.drop(1).dropBack(1);
+
+        // Unescaping valueString
+        immutable string[string] unescapingArray = [
+            `\\"`: `"`, /* Raw string required */
+            `\\\\`: "\\",
+            `\\b`: "\b",
+            `\\f`: "\f",
+            `\\n`: "\n",
+            `\\r`: "\r",
+            `\\t`: "\t"
+        ];
+        foreach (string escapedString, unescapedString; unescapingArray)
+        {
+            valueString = replaceAll(valueString, regex(escapedString, "g"), unescapedString);
+        }
+
+        // Fill the template
         if (key == "template")
         {
-            pageTemplate = value.str;
+            pageTemplate = valueString;
+        }
+        else if (endsWith(key, "_md"))
+        {
+            string contentHtml = filterMarkdown(valueString);
+            context[key] = contentHtml;
         }
         else
         {
-            context[key] = value.str;
+            context[key] = valueString;
         }
-
-    // Deal with the body
-    string contentHtml = filterMarkdown(contentMarkdown[1]);
-    context["CONTENT"] = contentHtml;
+    }
     
     // Build paths for rendering and saving
     string templatePath = buildPath(templatesRoot, pageTemplate);
