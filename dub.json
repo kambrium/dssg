@@ -4,7 +4,7 @@
         "Martin Muehlbauer"
     ],
     "description": "A simple static site generator written in D.",
-    "copyright": "Copyright © 2017, Martin Muehlbauer",
+    "copyright": "Copyright © Martin Muehlbauer",
     "license": "MIT",
     "dependencies": {
         "mustache-d": "~>0.1.3",
