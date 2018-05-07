@@ -7,7 +7,6 @@ import std.array;
 import std.conv;
 import std.file;
 import std.format;
-import std.json;
 import std.path;
 import std.range;
 import std.regex;
@@ -33,7 +32,6 @@ enum invalidTypeError = "ERROR: %s is not a valid port number.";
 enum createError = "ERROR: %s already exists. Try another name.";
 enum deleteError = "ERROR: Could not delete build directory. HINT: Maybe a directory or file in the build directory is in use?";
 enum inputFileError = "ERROR: Could not read file '%s'. HINT: Maybe it's not a text file.";
-enum jsonError = "ERROR: Could not process JSON in file '%s'. HINT: Check JSON syntax and position of delimiter [SPLIT].";
 enum templateError = "ERROR: Could not create HTML file '%s'. HINTS: Maybe the template's name specified in frontmatter is not correct. Maybe the default template (template.mustache) doesn't exist.";
 
 ushort port = 4242;
