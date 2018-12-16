@@ -11,7 +11,7 @@ DSSG is a static site generator written in the D programming language. It create
 
 Download
 --------
-The latest binaries are available on [https://github.com/kambrium/dssg/releases](https://github.com/kambrium/dssg/releases "https://github.com/kambrium/dssg/releases"). Currently, there are just Linux binaries.
+The latest binaries are available on [https://github.com/kambrium/dssg/releases](https://github.com/kambrium/dssg/releases "https://github.com/kambrium/dssg/releases"). Currently, there are just Ubuntu 16.04 binaries.
 
 Installation
 ------------
