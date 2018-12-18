@@ -62,6 +62,11 @@ $ dssg build
 $ dssg serve
 ```
 
+Made with DSSG
+--------------
+- [1572.li](http://1572.li "http://1572.li")
+
+
 License
 -------
 MIT
