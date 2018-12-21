@@ -290,13 +290,17 @@ private int serveProject(ushort port)
 {
     writeln("Starting server...");
     writeln("Press Ctrl+C to quit.");
-    auto router = new URLRouter;
-    router.get("*", serveStaticFiles(buildRoot));
+
     auto settings = new HTTPServerSettings;
     settings.port = port;
     settings.bindAddresses = ["::1", "127.0.0.1"];
+
+    auto router = new URLRouter;
+    router.get("*", serveStaticFiles(buildRoot));
+    
     listenHTTP(settings, router);
-    return runEventLoop();
+
+    return runApplication();
 }
 
 void showHelp()
