@@ -13,7 +13,7 @@ import std.regex;
 import std.stdio;
 import std.utf;
 import toml;
-import vibe.core.core;
+import vibe.core.core : runApplication;
 import vibe.http.fileserver;
 import vibe.http.router;
 import vibe.http.server;
