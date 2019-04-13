@@ -8,3 +8,5 @@ contents
 build
 dssg
 dub.selections.json
+*.exe
+*.dll
