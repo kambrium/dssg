@@ -73,7 +73,7 @@ void buildProject()
     }
 }
 
-void createBuildRoot()
+private void createBuildRoot()
 {
     // Remove previous build and create new build directory
     try
@@ -92,7 +92,7 @@ void createBuildRoot()
     }
 }
 
-void processPage(string pageName, string path)
+private void processPage(string pageName, string path)
 {
     // Read input file
     string inputFromFile;
