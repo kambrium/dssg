@@ -3,6 +3,7 @@ import defaults;
 import dmarkdown;
 import errormessages;
 import mustache;
+import server;
 import std.algorithm.searching;
 import std.array;
 import std.conv;
@@ -15,10 +16,6 @@ import std.stdio;
 import std.utf;
 import toml;
 import utilities;
-import vibe.core.core : runEventLoop;
-import vibe.http.fileserver;
-import vibe.http.router;
-import vibe.http.server;
 
 void main(string[] args)
 { 
@@ -266,22 +263,4 @@ void processPage(string pageName, string path)
         writeln(format(templateError, htmlPath));
         exitDssg;
     }
-}
-
-private int serveProject(ushort port)
-{
-    writeln("Starting server...");
-    writeln("Press Ctrl+C to quit.");
-
-    auto settings = new HTTPServerSettings;
-    settings.sessionStore = new MemorySessionStore;
-    settings.port = port;
-    settings.bindAddresses = ["::1", "127.0.0.1"];
-
-    auto router = new URLRouter;
-    router.get("*", serveStaticFiles(buildRoot));
-    
-    listenHTTP(settings, router);
-
-    return runEventLoop();
 }
