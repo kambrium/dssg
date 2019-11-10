@@ -13,7 +13,7 @@ import std.regex;
 import std.stdio;
 import std.utf;
 import toml;
-import vibe.core.core : runApplication;
+import vibe.core.core : runEventLoop;
 import vibe.http.fileserver;
 import vibe.http.router;
 import vibe.http.server;
@@ -292,6 +292,7 @@ private int serveProject(ushort port)
     writeln("Press Ctrl+C to quit.");
 
     auto settings = new HTTPServerSettings;
+    settings.sessionStore = new MemorySessionStore;
     settings.port = port;
     settings.bindAddresses = ["::1", "127.0.0.1"];
 
@@ -300,7 +301,7 @@ private int serveProject(ushort port)
     
     listenHTTP(settings, router);
 
-    return runApplication();
+    return runEventLoop();
 }
 
 void showHelp()
