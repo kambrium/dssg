@@ -1,5 +1,6 @@
 import core.exception;
 import core.stdc.stdlib;
+import defaults;
 import dmarkdown;
 import mustache;
 import std.algorithm.searching;
@@ -18,12 +19,8 @@ import vibe.http.fileserver;
 import vibe.http.router;
 import vibe.http.server;
 
-// Constants 
+// Version
 enum ver = "0.2.0";
-
-enum contentsRoot = "contents";
-enum templatesRoot = buildPath(contentsRoot,"_templates");
-enum buildRoot = "build";
 
 enum invalidArgumentError = "ERROR: Invalid argument(s) given. HINT: Enter 'dssg help' for a list of valid arguments.";
 enum invalidAmountError = "ERROR: Invalid amount of arguments given. HINT: Enter 'dssg help' for help.";
@@ -34,9 +31,6 @@ enum deleteError = "ERROR: Could not delete build directory. HINT: Maybe a direc
 enum inputFileError = "ERROR: Could not read file '%s'. HINT: Maybe it's not a text file.";
 enum templateError = "ERROR: Could not create HTML file '%s'. HINTS: Maybe the template's name specified in frontmatter is not correct. Maybe the default template (template.mustache) doesn't exist.";
 enum tomlParserError = "ERROR: Could not parse TOML file '%s'. HINT: Check your TOML syntax.";
-
-ushort port = 4242;
-
 
 void main(string[] args)
 { 
