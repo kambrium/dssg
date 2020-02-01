@@ -1,4 +1,4 @@
-module utilities;
+module dssg.utilities;
 
 import core.stdc.stdlib;
 import std.stdio;

@@ -1,6 +1,6 @@
-module server;
+module dssg.server;
 
-import defaults;
+import dssg.defaults;
 import std.stdio;
 import vibe.core.core : runEventLoop;
 import vibe.http.fileserver;

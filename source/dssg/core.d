@@ -1,8 +1,9 @@
-module dssgcore;
+module dssg.core;
 
-import defaults;
+import dssg.defaults;
+import dssg.errormessages;
+import dssg.utilities;
 import dmarkdown;
-import errormessages;
 import mustache;
 import std.algorithm.searching;
 import std.file;
@@ -13,7 +14,6 @@ import std.regex;
 import std.stdio;
 import std.utf;
 import toml;
-import utilities;
 
 void createProject(string projectName)
 {

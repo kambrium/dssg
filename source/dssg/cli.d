@@ -1,14 +1,14 @@
-module cli;
+module dssg.cli;
 
 import core.exception;
-import defaults;
-import dssgcore;
-import errormessages;
-import server;
+import dssg.defaults;
+import dssg.core;
+import dssg.errormessages;
+import dssg.server;
+import dssg.utilities;
 import std.conv;
 import std.format;
 import std.stdio;
-import utilities;
 
 void handleCli(string[] args)
 {

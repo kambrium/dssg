@@ -1,4 +1,4 @@
-import cli;
+import dssg.cli;
 
 void main(string[] args)
 { 

@@ -5,8 +5,7 @@ __dummy.html
 *.obj
 __test__*__
 contents
-build
-dssg
+buildgit
 dub.selections.json
 *.exe
 *.dll

@@ -1,4 +1,4 @@
-module defaults;
+module dssg.defaults;
 
 import std.path;
 

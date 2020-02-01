@@ -1,6 +1,6 @@
-module errormessages;
+module dssg.errormessages;
 
-import defaults;
+import dssg.defaults;
 import std.format;
 
 enum invalidArgumentError = "ERROR: Invalid argument(s) given. HINT: Enter 'dssg help' for a list of valid arguments.";
