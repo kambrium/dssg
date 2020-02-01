@@ -4,8 +4,6 @@ __dummy.html
 *.o
 *.obj
 __test__*__
-contents
 buildgit
 dub.selections.json
-*.exe
-*.dll
+bin
