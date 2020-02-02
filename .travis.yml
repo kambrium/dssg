@@ -1,4 +1,9 @@
 language: d
 
+d:
+  - dmd
+  - gdc
+  - ldc
+
 script:
-  - "dub build --config=application --arch=x86_64 --build=release --compiler=dmd"
+  - "dub build --build=release"
