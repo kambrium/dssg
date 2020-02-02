@@ -1,8 +1,8 @@
 module dssg.core;
 
 import dmarkdown;
-import dssg.defaults;
 import dssg.messages;
+import dssg.sharedvalues;
 import dssg.utilities;
 import mustache;
 import std.algorithm.searching;
@@ -123,7 +123,7 @@ private void processPage(string pageName, string path)
     Mustache mustache;
     auto context = new Mustache.Context;
 
-    string pageTemplate = defaultTemplate;
+    string pageTemplate = "template";
 
     // Iterate through TOMLDocument
     foreach (string key, value; tomlFromFile)

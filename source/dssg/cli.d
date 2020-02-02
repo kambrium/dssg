@@ -2,9 +2,9 @@ module dssg.cli;
 
 import core.exception;
 import dssg.core;
-import dssg.defaults;
 import dssg.messages;
 import dssg.server;
+import dssg.sharedvalues;
 import dssg.utilities;
 import std.conv;
 import std.format;

@@ -1,4 +1,4 @@
-module dssg.defaults;
+module dssg.sharedvalues;
 
 import std.path;
 
@@ -9,6 +9,3 @@ enum buildRoot = "build";
 
 // Default port
 ushort port = 4242;
-
-// Default template
-string defaultTemplate = "template";

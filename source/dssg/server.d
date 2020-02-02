@@ -1,7 +1,7 @@
 module dssg.server;
 
-import dssg.defaults;
 import dssg.messages;
+import dssg.sharedvalues;
 import std.stdio;
 import vibe.core.core : runEventLoop;
 import vibe.http.fileserver;
