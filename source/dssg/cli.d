@@ -24,7 +24,7 @@ void handleCli(string[] args)
                 }
                 else
                 {
-                    writeln(invalidAmountError);
+                    writeln(invalidAmountErr);
                     break;
                 }
             case "build":
@@ -35,7 +35,7 @@ void handleCli(string[] args)
                 }
                 else
                 {
-                    writeln(invalidAmountError);
+                    writeln(invalidAmountErr);
                     break;
                 }
             case "serve":
@@ -54,13 +54,13 @@ void handleCli(string[] args)
                     }
                     catch (ConvException e)
                     {
-                        writeln(format(invalidTypeError, args[2]));
+                        writeln(format(invalidTypeErr, args[2]));
                         break;
                     }
                 }
                 else
                 {
-                    writeln(invalidAmountError);
+                    writeln(invalidAmountErr);
                     break;
                 }
             case "version":
@@ -71,7 +71,7 @@ void handleCli(string[] args)
                 }
                 else
                 {
-                    writeln(invalidAmountError);
+                    writeln(invalidAmountErr);
                     break;
                 }
             case "help":
@@ -82,14 +82,14 @@ void handleCli(string[] args)
                 }
                 else
                 {
-                    writeln(invalidAmountError);
+                    writeln(invalidAmountErr);
                     break;
                 }
-            default: writeln(invalidArgumentError);
+            default: writeln(invalidArgumentErr);
         }
     }
     catch (RangeError e)
     {
-        writeln(invalidArgumentError);
+        writeln(invalidArgumentErr);
     }
 }

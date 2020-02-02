@@ -24,7 +24,7 @@ void createProject(string projectName)
     }
     else
     {
-        writeln(format(createError, projectName));
+        writeln(format(createErr, projectName));
     }
 }
 
@@ -68,7 +68,7 @@ void buildProject()
     }
     else
     {
-        writeln(dirStructureError);
+        writeln(dirStructureErr);
         exitDssg;
     }
 }
@@ -87,7 +87,7 @@ private void createBuildRoot()
     }
     catch (FileException e)
     {
-        writeln(deleteError);
+        writeln(deleteErr);
         exitDssg;
     }
 }
@@ -102,7 +102,7 @@ private void processPage(string pageName, string path)
     }
     catch (UTFException e)
     {
-        writeln(format(inputFileError, path));
+        writeln(format(inputFileErr, path));
         exitDssg;
     }
 
@@ -114,7 +114,7 @@ private void processPage(string pageName, string path)
     }
     catch (TOMLParserException e)
     {
-        writeln(format(tomlParserError, path));
+        writeln(format(tomlParserErr, path));
         exitDssg;
     }
 
@@ -173,7 +173,7 @@ private void processPage(string pageName, string path)
     }
     catch (FileException e)
     {
-        writeln(format(templateError, htmlPath));
+        writeln(format(templateErr, htmlPath));
         exitDssg;
     }
 }
