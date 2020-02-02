@@ -1,8 +1,8 @@
 module dssg.cli;
 
 import core.exception;
-import dssg.defaults;
 import dssg.core;
+import dssg.defaults;
 import dssg.errormessages;
 import dssg.server;
 import dssg.utilities;

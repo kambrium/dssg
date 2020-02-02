@@ -1,9 +1,9 @@
 module dssg.core;
 
+import dmarkdown;
 import dssg.defaults;
 import dssg.errormessages;
 import dssg.utilities;
-import dmarkdown;
 import mustache;
 import std.algorithm.searching;
 import std.file;
