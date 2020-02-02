@@ -5,5 +5,10 @@ d:
   # - gdc
   - ldc
 
+os:
+  - linux
+  - osx
+  - windows
+
 script:
   - "dub build --build=release"
