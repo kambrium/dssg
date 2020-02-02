@@ -132,7 +132,7 @@ private void processPage(string pageName, string path)
         string valueString = value.toString.drop(1).dropBack(1);
 
         // Unescaping valueString
-        immutable string[string] unescapingArray = [
+        enum string[string] unescapingArray = [
             `\\"`: `"`, /* Raw string required */
             `\\\\`: "\\",
             `\\b`: "\b",
