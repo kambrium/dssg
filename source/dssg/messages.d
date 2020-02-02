@@ -1,4 +1,4 @@
-module dssg.errormessages;
+module dssg.messages;
 
 import dssg.defaults;
 import std.format;
@@ -12,3 +12,9 @@ enum deleteError = "ERROR: Could not delete build directory. HINT: Maybe a direc
 enum inputFileError = "ERROR: Could not read file '%s'. HINT: Maybe it's not a text file.";
 enum templateError = "ERROR: Could not create HTML file '%s'. HINTS: Maybe the template's name specified in frontmatter is not correct. Maybe the default template (template.mustache) doesn't exist.";
 enum tomlParserError = "ERROR: Could not parse TOML file '%s'. HINT: Check your TOML syntax.";
+
+enum startingBuildMsg = "Starting the build process...";
+enum finishedBuildMsg = "Finished new build.";
+enum deletedBuildMsg = "Deleted previous build.";
+enum startingServerMsg = "Starting server... Press Ctrl+C to quit.";
+enum exitingMsg = "Build not finished. Exiting...";

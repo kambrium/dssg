@@ -3,7 +3,7 @@ module dssg.cli;
 import core.exception;
 import dssg.core;
 import dssg.defaults;
-import dssg.errormessages;
+import dssg.messages;
 import dssg.server;
 import dssg.utilities;
 import std.conv;

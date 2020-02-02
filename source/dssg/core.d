@@ -2,7 +2,7 @@ module dssg.core;
 
 import dmarkdown;
 import dssg.defaults;
-import dssg.errormessages;
+import dssg.messages;
 import dssg.utilities;
 import mustache;
 import std.algorithm.searching;
@@ -33,7 +33,7 @@ void buildProject()
     // Make sure that required directories exist
     if (templatesRoot.exists)
     {
-        writeln("Starting the build process...");
+        writeln(startingBuildMsg);
 
         createBuildRoot;
 
@@ -64,7 +64,7 @@ void buildProject()
             }
         }
 
-        writeln("Finished new build.");
+        writeln(finishedBuildMsg);
     }
     else
     {
@@ -81,7 +81,7 @@ private void createBuildRoot()
         if (buildRoot.exists)
         {
             rmdirRecurse(buildRoot);
-            writeln("Deleted previous build.");
+            writeln(deletedBuildMsg);
         }
         mkdir(buildRoot);
     }

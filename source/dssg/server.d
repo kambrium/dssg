@@ -1,6 +1,7 @@
 module dssg.server;
 
 import dssg.defaults;
+import dssg.messages;
 import std.stdio;
 import vibe.core.core : runEventLoop;
 import vibe.http.fileserver;
@@ -9,8 +10,7 @@ import vibe.http.server;
 
 int serveProject(ushort port)
 {
-    writeln("Starting server...");
-    writeln("Press Ctrl+C to quit.");
+    writeln(startingServerMsg);
 
     auto settings = new HTTPServerSettings;
     settings.sessionStore = new MemorySessionStore;

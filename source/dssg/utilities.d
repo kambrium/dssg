@@ -1,6 +1,7 @@
 module dssg.utilities;
 
 import core.stdc.stdlib;
+import dssg.messages;
 import std.stdio;
 
 void showHelp()
@@ -18,7 +19,7 @@ void showHelp()
 
 void exitDssg()
 {
-    writeln("Build not finished. Exiting...");
+    writeln(exitingMsg);
     exit(0);
 }
 
