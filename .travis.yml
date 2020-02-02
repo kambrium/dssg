@@ -6,9 +6,8 @@ d:
   - ldc
 
 os:
+  # - osx
   - linux
-  - osx
-  - windows
 
 script:
   - "dub build --build=release"
