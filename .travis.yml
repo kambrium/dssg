@@ -1,6 +1,4 @@
 language: d
 
-d: dmd-2.089.1
-
 script:
-  - "dub build --config=application --arch=x86_64 --build=release"
+  - "dub build --config=application --arch=x86_64 --build=release --compiler=dmd"
