@@ -1,3 +1,5 @@
+// The messages used in the application
+
 module dssg.messages;
 
 import dssg.sharedvalues;

@@ -1,3 +1,5 @@
+// Some additional functions that did not fit anywhere else
+
 module dssg.utilities;
 
 import core.stdc.stdlib;

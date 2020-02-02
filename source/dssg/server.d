@@ -1,3 +1,5 @@
+// A simple web server
+
 module dssg.server;
 
 import dssg.messages;

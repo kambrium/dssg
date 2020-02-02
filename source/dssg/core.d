@@ -1,3 +1,5 @@
+// The functions required for creating and building a project
+
 module dssg.core;
 
 import dmarkdown;

@@ -1,3 +1,5 @@
+// Command line interface handling
+
 module dssg.cli;
 
 import core.exception;

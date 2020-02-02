@@ -1,8 +1,10 @@
+// Values shared between other modules
+
 module dssg.sharedvalues;
 
 import std.path;
 
-// Default directories
+// Directories
 enum contentsRoot = "contents";
 enum templatesRoot = buildPath(contentsRoot,"_templates");
 enum buildRoot = "build";
