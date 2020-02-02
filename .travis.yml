@@ -1,8 +1,8 @@
 language: d
 
 d:
-  - dmd
-  - gdc
+  # - dmd
+  # - gdc
   - ldc
 
 script:
