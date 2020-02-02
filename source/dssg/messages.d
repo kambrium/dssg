@@ -19,7 +19,7 @@ enum deletedBuildMsg = "Deleted previous build.";
 enum startingServerMsg = "Starting server... Press Ctrl+C to quit.";
 enum exitingMsg = "Build not finished. Exiting...";
 
-string[] helpMsg = [
+enum string[] helpMsg = [
     "DSSG - A static site generator written in D",
     "",
     "Usage:",
