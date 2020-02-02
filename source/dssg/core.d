@@ -123,7 +123,7 @@ private void processPage(string pageName, string path)
     Mustache mustache;
     auto context = new Mustache.Context;
 
-    string pageTemplate = "template";
+    string pageTemplate = defaultTemplate;
 
     // Iterate through TOMLDocument
     foreach (string key, value; tomlFromFile)
