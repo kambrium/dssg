@@ -18,3 +18,14 @@ enum finishedBuildMsg = "Finished new build.";
 enum deletedBuildMsg = "Deleted previous build.";
 enum startingServerMsg = "Starting server... Press Ctrl+C to quit.";
 enum exitingMsg = "Build not finished. Exiting...";
+
+string[] helpMsg = [
+    "DSSG - A static site generator written in D",
+    "",
+    "Usage:",
+    "  dssg new <project_name>  Create a new DSSG project",
+    "  dssg build               Build a DSSG project",
+    "  dssg serve [<port>]      Serve DSSG project. Standard port is 4242",
+    "  dssg version             Get DSSG version",
+    "  dssg help                Read this help text"
+];

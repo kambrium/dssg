@@ -6,15 +6,10 @@ import std.stdio;
 
 void showHelp()
 {
-    // Help text
-    writeln("DSSG - A static site generator written in D");
-    writeln("");
-    writeln("Usage:");
-    writeln("  dssg new <project_name>  Create a new DSSG project");
-    writeln("  dssg build               Build a DSSG project");
-    writeln("  dssg serve [<port>]      Serve DSSG project. Standard port is 4242");
-    writeln("  dssg version             Get DSSG version");
-    writeln("  dssg help                Read this help text");
+    foreach (string value; helpMsg)
+    {
+        writeln(value);
+    }
 }
 
 void exitDssg()
