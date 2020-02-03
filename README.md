@@ -31,14 +31,20 @@ The latest binaries are available on [https://github.com/kambrium/dssg/releases]
 
 Installation (Linux)
 --------------------
-1. After you have downloaded the software (see above), open a terminal, change to the directory that contains the DSSG binary and set the permissions so that you can execute the program.
+1. After you have downloaded the software (see above), open a terminal and unzip the archive.
+
+    ```bash
+    $ unzip dssg_X.Y.Z_ubuntu0000_x64.zip -d /this/is/your/dssg/path/
+    ```
+
+2. Change to the directory that contains the DSSG binary and set the permissions so that you can execute the program.
 
     ```bash
     $ cd /this/is/your/dssg/path/
     $ chmod u+x dssg
     ```
 
-2. Add the directory that contains the DSSG binary to your PATH. Please refer to the documentation of your distribution for further details. Here is an example of how it works on **Ubuntu** with **Bash**.
+3. Add the directory that contains the DSSG binary to your PATH. Please refer to the documentation of your distribution for further details. Here is an example of how it works on **Ubuntu** with **Bash**.
 
     ```bash
     $ echo 'export PATH=$PATH:/this/is/your/dssg/path/' >> ~/.bashrc
@@ -47,13 +53,19 @@ Installation (Linux)
 
 Installation (Windows)
 ----------------------
-1. After you have downloaded the software (see above), open the PowerShell and add the directory that contains the DSSG binary to your Path.
+1. After you have downloaded the software (see above), open the PowerShell and unzip the archive.
+
+    ```powershell
+    PS> Expand-Archive -Path dssg_X.Y.Z_win_x64.zip -DestinationPath C:\this\is\your\dssg\path
+    ```
+
+2. Add the directory that contains the DSSG binary to your Path.
 
     ```powershell
     PS> [System.Environment]::SetEnvironmentVariable("Path", [System.Environment]::GetEnvironmentVariable("Path", [EnvironmentVariableTarget]::User) + ";C:\this\is\your\dssg\path", [EnvironmentVariableTarget]::User)
     ```
 
-2. Restart the PowerShell.
+3. Restart the PowerShell.
 
 Try the example
 ---------------
