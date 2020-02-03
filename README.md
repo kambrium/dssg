@@ -11,13 +11,13 @@ Unlike other static site generators, DSSG doesn't differentiate between front ma
 
 For maximum flexibility, each project can be based on multiple templates.
 
-Moreover, content may be written in [Markdown](https://en.wikipedia.org/wiki/Markdown "Markdown") or pure HTML.
+Content may be written in both [Markdown](https://en.wikipedia.org/wiki/Markdown "Markdown") or pure HTML.
 
 How does it work?
 -----------------
 DSSG creates HTML pages out of [TOML](https://github.com/toml-lang/toml "TOML") files. Each TOML file represents one HTML page and consists of as many key-value pairs as you want.
 
-The key-value pairs contain both, metadata and the actual page content. There can be multiple key-value pairs with page content. If a key in your TOML file ends with `_md`, DSSG expects Markdown as value. DSSG will turn the Markdown into HTML.
+The key-value pairs contain both metadata and the actual page content. There can be multiple key-value pairs with page content. If a key in your TOML file ends with `_md`, DSSG expects Markdown as value. DSSG will turn the Markdown into HTML.
 
 Templates are written in the [Mustache template language](https://mustache.github.io/ "Mustache template language"). DSSG substitues each variable in the template with its equivalent from the TOML file. 
 
