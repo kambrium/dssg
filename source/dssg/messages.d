@@ -22,7 +22,7 @@ enum startingServerMsg = "Starting server... Press Ctrl+C to quit.";
 enum exitingMsg = "Build not finished. Exiting...";
 
 enum string[] helpMsg = [
-    "DSSG - A flexible static site generator with a different approach",
+    "DSSG - A static site generator with a different approach",
     "",
     "Usage:",
     "  dssg new <project_name>  Create a new DSSG project",
