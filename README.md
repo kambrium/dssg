@@ -1,5 +1,5 @@
-DSSG - A flexible static site generator with a different approach
-=================================================================
+DSSG - A static site generator with a different approach
+========================================================
 
 ![DSSG logo](dssg-logo.jpg)
 
@@ -7,21 +7,22 @@ DSSG - A flexible static site generator with a different approach
 
 Advantages
 ----------
-Unlike other static site generators, DSSG doesn't distinguish between a front matter and a content section in its content files. This makes it very easy to create web pages based on templates with multiple content sections.
+Unlike other static site generators, DSSG doesn't differentiate between front matter and a content section in its content files. This makes it very easy to create web pages based on templates with multiple content sections.
 
-For maximal flexibility, content may be written in [Markdown](https://en.wikipedia.org/wiki/Markdown "Markdown") or pure HTML. Moreover, each project can be based on multiple templates.
+For maximum flexibility, each project can be based on multiple templates.
+
+Moreover, content may be written in [Markdown](https://en.wikipedia.org/wiki/Markdown "Markdown") or pure HTML.
 
 How does it work?
 -----------------
 DSSG creates HTML pages out of [TOML](https://github.com/toml-lang/toml "TOML") files. Each TOML file represents one HTML page and consists of as many key-value pairs as you want.
 
-The key-value pairs contain both, metadata (e.g. a date) and the actual page content. If a key in your TOML file ends with `_md`, DSSG expects Markdown as value. DSSG will turn the Markdown into HTML.
+The key-value pairs contain both, metadata and the actual page content. There can be multiple key-value pairs with page content. If a key in your TOML file ends with `_md`, DSSG expects Markdown as value. DSSG will turn the Markdown into HTML.
 
 Templates are written in the [Mustache template language](https://mustache.github.io/ "Mustache template language"). DSSG substitues each variable in the template with its equivalent from the TOML file. 
 
 Why is it called DSSG?
 -----------------------
-
 DSSG is written in the [D programming language](https://dlang.org/ "D programming language"). DSSG stands for **D** **S**tatic **S**ite **G**enerator.
 
 Download
@@ -46,7 +47,6 @@ Installation (Linux)
 
 Installation (Windows)
 ----------------------
-
 1. After you have downloaded the software (see above), open the PowerShell and add the directory that contains the DSSG binary to your Path.
 
     ```powershell
@@ -57,6 +57,7 @@ Installation (Windows)
 
 Try the example
 ---------------
+
 ```bash
 $ git clone https://github.com/kambrium/dssg-example.git
 $ cd dssg-example
@@ -66,6 +67,7 @@ $ dssg serve
 
 Begin from scratch
 ------------------
+
 ```bash
 $ dssg new myproject
 $ cd myproject
