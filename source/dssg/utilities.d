@@ -22,5 +22,5 @@ void exitDssg()
 
 void getVersion()
 {
-    writeln("0.2.0");
+    writeln("1.0.0");
 }
