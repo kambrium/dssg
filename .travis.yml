@@ -1,9 +1,9 @@
 language: d
 
 d:
-  # - dmd
+  - dmd
   # - gdc
-  - ldc
+  # - ldc
 
 os:
   # - osx
