@@ -127,41 +127,64 @@ private void processPage(string pageName, string path)
 
     string pageTemplate = "template";
 
-    // Iterate through TOMLDocument
-    foreach (string key, value; tomlFromFile)
+    void walkTomlTree(TOMLValue[string] tvalue, ref Mustache.Context ctx)
     {
-        // Turn TOML value to string and drop quotation marks at the beginning and end of string
-        string valueString = value.toString.drop(1).dropBack(1);
+        foreach (string key, TOMLValue value; tvalue)
+        {
+            if (value.type == TOML_TYPE.TABLE)
+            {
+                auto subctx = ctx.addSubContext(key);
+                walkTomlTree(value.table, subctx);
+            }
+            else if (value.type == TOML_TYPE.ARRAY) 
+            {
+                foreach (TOMLValue avalue; value.array)
+                {
+                    auto subctx = ctx.addSubContext(key);
+                    walkTomlTree(avalue.table, subctx);
+                }
+            }
+            else 
+            {
+                // Turn TOML value to string and drop quotation marks at the beginning and end of string
+                string valueString = value.toString.drop(1).dropBack(1);
+    
+                // Unescaping valueString
+                enum string[string] unescapingArray = [
+                  `\\"`: `"`, /* Raw string required */
+                  `\\\\`: "\\",
+                  `\\b`: "\b",
+                  `\\f`: "\f",
+                  `\\n`: "\n",
+                  `\\r`: "\r",
+                  `\\t`: "\t"
+                ];
+                foreach (string escapedString, unescapedString; unescapingArray)
+                {
+                    valueString = replaceAll(valueString, regex(escapedString, "g"), unescapedString);
+                }
+    
+                // Fill this level of the context.
+                if (endsWith(key, "_md"))
+                {
+                    string contentHtml = filterMarkdown(valueString);
+                    ctx[key] = contentHtml;
+                } 
+                else 
+                {
+                    ctx[key] = valueString;
+                }
+            }
+        }
+    }
 
-        // Unescaping valueString
-        enum string[string] unescapingArray = [
-            `\\"`: `"`, /* Raw string required */
-            `\\\\`: "\\",
-            `\\b`: "\b",
-            `\\f`: "\f",
-            `\\n`: "\n",
-            `\\r`: "\r",
-            `\\t`: "\t"
-        ];
-        foreach (string escapedString, unescapedString; unescapingArray)
-        {
-            valueString = replaceAll(valueString, regex(escapedString, "g"), unescapedString);
-        }
-
-        // Fill the template
-        if (key == "template")
-        {
-            pageTemplate = valueString;
-        }
-        else if (endsWith(key, "_md"))
-        {
-            string contentHtml = filterMarkdown(valueString);
-            context[key] = contentHtml;
-        }
-        else
-        {
-            context[key] = valueString;
-        }
+    // Recurse through TOMLDocument
+    walkTomlTree(tomlFromFile.table, context);
+    try {
+        pageTemplate = context["template"];
+    }
+    catch (core.exception.RangeError e) {
+        pageTemplate = "template";
     }
     
     // Build paths for rendering and saving
