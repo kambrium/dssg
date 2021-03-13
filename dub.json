@@ -10,7 +10,7 @@
         "dmarkdown": "~>0.3.0",
         "mustache-d": "~>0.1.4",
         "toml": "~>1.0.0-rc.3",
-        "vibe-d": "~>0.8.6"
+        "vibe-d:http": "~>0.9.3"
     },
     "targetPath": "bin"
 }
