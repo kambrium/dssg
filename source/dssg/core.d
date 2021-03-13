@@ -37,7 +37,7 @@ void buildProject()
     {
         writeln(startingBuildMsg);
 
-        createBuildRoot;
+        handleBuildRoot;
 
         // Iterate through all items in contentsRoot
         foreach (DirEntry entry; dirEntries(contentsRoot, SpanMode.breadth))
@@ -75,17 +75,30 @@ void buildProject()
     }
 }
 
-private void createBuildRoot()
+private void handleBuildRoot()
 {
-    // Remove previous build and create new build directory
+    // Remove previous build or create new build directory
     try
     {
         if (buildRoot.exists)
         {
-            rmdirRecurse(buildRoot);
+            foreach (DirEntry entry; dirEntries(buildRoot, SpanMode.shallow))
+            {
+                if (entry.isDir)
+                {
+                    rmdirRecurse(entry.name);
+                }
+                else if (entry.isFile)
+                {
+                    remove(entry.name);
+                }
+            }
             writeln(deletedBuildMsg);
         }
-        mkdir(buildRoot);
+        else
+        {
+            mkdir(buildRoot);
+        }
     }
     catch (FileException e)
     {
