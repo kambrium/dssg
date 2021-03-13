@@ -1,10 +1,11 @@
 {
     "name": "dssg",
     "authors": [
-        "Martin Muehlbauer"
+        "Martin Muehlbauer",
+        "Pierce Ng"
     ],
     "description": "A simple static site generator written in D.",
-    "copyright": "Copyright © Martin Muehlbauer",
+    "copyright": "Copyright © Martin Muehlbauer and contributors",
     "license": "MIT",
     "dependencies": {
         "dmarkdown": "~>0.3.0",
