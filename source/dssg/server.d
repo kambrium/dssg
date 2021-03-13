@@ -23,7 +23,7 @@ int serveProject(ushort port)
     router.get("*", serveStaticFiles(buildRoot));
     
     auto l = listenHTTP(settings, router);
-	scope (exit) l.stopListening();
+    scope (exit) l.stopListening();
 
     return runEventLoop();
 }
