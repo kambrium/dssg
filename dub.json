@@ -4,7 +4,7 @@
         "Martin Muehlbauer",
         "Pierce Ng"
     ],
-    "description": "A simple static site generator written in D.",
+    "description": "A static site generator with a different approach.",
     "copyright": "Copyright © Martin Muehlbauer and contributors",
     "license": "MIT",
     "dependencies": {
