@@ -8,7 +8,7 @@
     "license": "MIT",
     "dependencies": {
         "dmarkdown": "~>0.3.0",
-        "mustache-d": "~>0.1.4",
+        "mustache-d": "~>0.1.5",
         "toml": "~>1.0.0-rc.3",
         "vibe-d:http": "~>0.9.3"
     },
