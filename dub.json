@@ -5,7 +5,7 @@
         "Pierce Ng"
     ],
     "description": "A static site generator with a different approach.",
-    "copyright": "Copyright © Martin Muehlbauer and contributors",
+    "copyright": "Copyright © 2021 Martin Muehlbauer and contributors",
     "license": "MIT",
     "dependencies": {
         "dmarkdown": "~>0.3.0",
