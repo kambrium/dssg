@@ -9,5 +9,7 @@ os:
   # - osx
   - linux
 
+dist: bionic
+
 script:
   - "dub build --build=release"
