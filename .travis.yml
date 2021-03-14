@@ -2,14 +2,8 @@ language: d
 
 jobs:
   include:
-  - os: linux
-    dist: bionic
-    before_script: uname -a
-  - os: linux
-    dist: focal
-    before_script: uname -a
-
-#dist: bionic
+  - dist: bionic
+  - dist: focal
 
 script:
-  - "dub build --build=release"
+  - "dub build"
