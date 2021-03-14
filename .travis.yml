@@ -1,15 +1,11 @@
 language: d
 
-d:
-  - dmd
-  # - gdc
-  # - ldc
+jobs:
+  include:
+  - dist: bionic
+  - dist: focal
 
-os:
-  # - osx
-  - linux
-
-dist: bionic
+#dist: bionic
 
 script:
   - "dub build --build=release"
