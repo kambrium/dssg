@@ -2,9 +2,11 @@ language: d
 
 jobs:
   include:
-  - dist: bionic
+  - os: linux
+    dist: bionic
     before_script: uname -a
-  - dist: focal
+  - os: linux
+    dist: focal
     before_script: uname -a
 
 #dist: bionic
