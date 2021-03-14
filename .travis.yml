@@ -3,9 +3,9 @@ language: d
 jobs:
   include:
   - dist: bionic
-    before_install: uname -a
+    before_script: uname -a
   - dist: focal
-    before_install: uname -a
+    before_script: uname -a
 
 #dist: bionic
 
